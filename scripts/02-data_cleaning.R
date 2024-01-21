@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Cleans the raw Toronto homeless data from opendatatoronto
+# Purpose: Cleans the raw Toronto homeless data
 # Author: Tam Ly
 # Date: 23 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
