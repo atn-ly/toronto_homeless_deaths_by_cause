@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Downloads, saves, and reads the data on Toronto's
+# Purpose: Downloads and saves the data on Toronto's
 # homeless deaths by cause from opendatatoronto
 # Author: Tam Ly
 # Date: 23 January 2024
