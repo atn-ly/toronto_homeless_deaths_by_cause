@@ -1,26 +1,25 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Downloads, saves, and reads the data on Toronto's
+# homeless deaths by cause from opendatatoronto
+# Author: Tam Ly
+# Date: 23 January 2024
+# Contact: annatn.ly@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
-
+# Pre-requisites: Install the packages opendatatoronto and tidyverse
 
 #### Workspace setup ####
 library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
 
 #### Download data ####
-# [...ADD CODE HERE TO DOWNLOAD...]
-
-
+raw_toronto_homeless <-
+  list_package_resources("a7ae08f3-c512-4a88-bb3c-ab40eca50c5e") |> 
+  filter(name == "Homeless deaths by cause.csv") |> 
+  get_resource()
 
 #### Save data ####
-# [...UPDATE THIS...]
-# change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+write_csv(
+  x = raw_toronto_homeless, 
+  file = "inputs/data/toronto_homeless.csv"
+) 
 
-         
