@@ -20,6 +20,6 @@ raw_toronto_homeless <-
 #### Save data ####
 write_csv(
   x = raw_toronto_homeless, 
-  file = "inputs/data/toronto_homeless.csv"
+  file = "inputs/data/raw_toronto_homeless.csv"
 ) 
 
