@@ -1,0 +1,62 @@
+---
+title: "[ADD TITLE]"
+author: "Tam Ly"
+date: "23 January 2024"
+date-format: long
+abstract: "[ADD ABSTRACT]"
+format: pdf
+bibliography: references.bib
+number-sections: true
+thanks: "Code and data are available at: [https://github.com/atn-ly/toronto_homeless_deaths_by_cause](https://github.com/atn-ly/toronto_homeless_deaths_by_cause)"
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+# Read in cleaned data
+cleaned_toronto_homeless <- read.csv(here::here("outputs/data/cleaned_toronto_homeless.csv"))
+```
+
+# Introduction
+
+# Data
+
+```{r}
+cleaned_toronto_homeless |> 
+  ggplot(mapping = aes(x = year_of_death, y= count, fill = cause_of_death)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Year of death", y = "Number of deaths", fill = "Cause of death")
+```
+
+```{r}
+#cleaned_toronto_homeless |> 
+  #ggplot(mapping = aes(x = age_group, y = count, fill = gender)) +
+  #geom_col() +
+  #theme_minimal() +
+  #labs(x = "Age group", y = "Number of deaths", fill = "Gender") +
+  #facet_wrap(vars(cause_of_death))
+```
+
+```{r}
+cleaned_toronto_homeless |> 
+  filter(cause_of_death == "Drug Toxicity") |> 
+  ggplot(mapping = aes(x = age_group, y = count, fill = gender)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Age group", y = "Number of deaths", fill = "Gender")
+```
+
+```{r}
+cleaned_toronto_homeless |> 
+  filter(cause_of_death == "Drug Toxicity") |> 
+  ggplot(mapping = aes(x = age_group, y = count)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Age group", y = "Number of deaths") +
+  facet_wrap(vars(gender))
+```
+
+# References
