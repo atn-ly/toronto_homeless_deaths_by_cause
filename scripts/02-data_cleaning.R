@@ -1,10 +1,10 @@
 #### Preamble ####
 # Purpose: Cleans the raw Toronto homeless data
 # Author: Tam Ly
-# Date: 23 January 2024
+# Date: 25 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: Run "01-download_data.R" script
+# Pre-requisites: Run the "01-download_data.R" script and download the tidyverse and janitor packages
 
 #### Workspace setup ####
 library(tidyverse)

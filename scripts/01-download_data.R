@@ -1,10 +1,10 @@
 #### Preamble ####
 # Purpose: Downloads and saves the Toronto homeless data from opendatatoronto
 # Author: Tam Ly
-# Date: 23 January 2024
+# Date: 25 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: Install the packages opendatatoronto and tidyverse
+# Pre-requisites: Install the opendatatoronto and tidyverse packages
 
 #### Workspace setup ####
 library(opendatatoronto)
