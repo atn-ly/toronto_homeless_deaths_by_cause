@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Simulates the Deaths of People Experiencing Homelessness dataset 
+# Purpose: Simulates the deaths of people Eexperiencing homelessness dataset 
 # Author: Tam Ly
 # Date: 25 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
@@ -7,13 +7,12 @@
 # Pre-requisites: Install the tidyverse package
 
 #### Workspace setup ####
-library(tidyverse)
+library(tidyverse) # load package
 
 #### Simulate data ####
-# set seed for reproducibility
-set.seed(302)
+set.seed(302) # set seed for reproducibility
 
-# simulate year, cause of death, age, group, gender, and count
+# simulate variables for year, cause of death, age, group, gender, and count
 year_of_death <- sample(2017:2023, size = 253, replace = TRUE)
 
 cause_of_death <- sample(
@@ -38,6 +37,7 @@ gender <- sample(
 
 count <- sample(1:40, size = 253, replace = TRUE)
 
+# create simulated dataset with simulated variables
 simulated_homeless_data <-
   tibble(
     year_of_death,
@@ -48,7 +48,7 @@ simulated_homeless_data <-
 
 simulated_homeless_data
 
-#### Test data ####
+#### Test simulated data ####
 
 # Test number of unique observations
 simulated_homeless_data$year_of_death |>
@@ -68,12 +68,10 @@ simulated_homeless_data$gender |>
   length() == 3
 
 # Test bounds
-
 simulated_homeless_data$year_of_death |> min() == 2017
 simulated_homeless_data$year_of_death |> max() == 2023
 
 # Test variable classes
-
 simulated_homeless_data$year_of_death |> class() == "integer"
 simulated_homeless_data$cause_of_death |> class() == "character"
 simulated_homeless_data$age_group |> class() == "character"

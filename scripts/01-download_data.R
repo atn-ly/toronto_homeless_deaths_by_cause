@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Downloads and saves the Toronto homeless data from opendatatoronto
+# Purpose: Downloads and saves the Toronto homeless dataset from opendatatoronto
 # Author: Tam Ly
 # Date: 25 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
@@ -7,6 +7,7 @@
 # Pre-requisites: Install the opendatatoronto and tidyverse packages
 
 #### Workspace setup ####
+# Load packages
 library(opendatatoronto)
 library(tidyverse)
 
@@ -21,4 +22,3 @@ write_csv(
   x = raw_toronto_homeless, 
   file = "inputs/data/raw_toronto_homeless.csv"
 ) 
-

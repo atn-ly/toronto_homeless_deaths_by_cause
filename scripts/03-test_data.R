@@ -8,6 +8,7 @@
 
 
 #### Workspace setup ####
+# Load packages
 library(tidyverse)
 
 # Read in cleaned data
@@ -33,12 +34,10 @@ cleaned_toronto_homeless$gender |>
   length() == 3
 
 # Test bounds
-
 cleaned_toronto_homeless$year_of_death |> min() == 2017
 cleaned_toronto_homeless$year_of_death |> max() == 2023
 
 # Test variable classes
-
 cleaned_toronto_homeless$year_of_death |> class() == "integer"
 cleaned_toronto_homeless$cause_of_death |> class() == "character"
 cleaned_toronto_homeless$age_group |> class() == "character"
