@@ -57,7 +57,7 @@ The variables included in our dataset were mainly categorical—*ID number*, *Ye
 #| tbl-cap: "Sample of the cleaned dataset for the number of deaths by cause, age group, and gender between 2017 and 2023"
 #| echo: false
 cleaned_toronto_homeless |>
-  slice(1:15) |>
+  slice(1:15) |> # Look at only the first 15 observations
   kable(
     col.names = c("Year", "Cause of death", "Age group", "Gender", "Count")
   )
