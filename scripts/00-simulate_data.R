@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Simulates the deaths of people Eexperiencing homelessness dataset 
+# Purpose: Simulates the deaths of people experiencing homelessness dataset 
 # Author: Tam Ly
 # Date: 25 January 2024
 # Contact: annatn.ly@mail.utoronto.ca
