@@ -1,4 +1,4 @@
-# Drug toxicity is the leading cause of death in people experiencing homelessness: Highest numbers among men between the ages of 41 and 60 in 2021
+# Drug toxicity is the leading cause of death in people experiencing homelessness: Highest numbers among men aged 40 to 59 in 2021
 
 ## Overview
 
@@ -6,7 +6,7 @@ This repo contains the analysis done to investigate the deaths of people experie
 
 ## Abstract
 
-The number of deaths in people experiencing homelessness has been increasing since the COVID-19 pandemic. Using data obtained between 2017 and 2023 from the City of Toronto's Open Data Portal, we investigated the cause of deaths in people experiencing homelessness by age and gender. We found that drug toxicity is the leading cause of death, with the highest numbers observed among men aged 41 to 60 in 2021. Our discovery reveals the hidden impacts of the pandemic on people experiencing homelessness who use drugs and highlights the need for improved services.
+The number of deaths in people experiencing homelessness has been increasing since the COVID-19 pandemic. Using data obtained between 2017 and 2023 from the City of Toronto's Open Data Portal, we investigated the cause of deaths in people experiencing homelessness by age and gender. We found that drug toxicity is the leading cause of death, with the highest numbers observed among men aged 40 to 59 in 2021. Our discovery reveals the hidden impacts of the pandemic on people experiencing homelessness who use drugs and highlights the need for improved services.
 
 ## File Structure
 
