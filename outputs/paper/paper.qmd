@@ -1,9 +1,9 @@
 ---
-title: "Drug toxicity is the leading cause of deaths in people experiencing homelessness: Highest number of deaths due to drug toxicity occurring in men between the ages of 41 and 60 in 2021"
+title: "Drug toxicity is the leading cause of death in people experiencing homelessness: Highest numbers among men between the ages of 41 and 60 in 2021"
 author: "Tam Ly"
 date: "25 January 2024"
 date-format: long
-abstract: "The number of deaths in people experiencing homelessness have been increasing since the COVID-19 pandemic. Using data obtained between 2017 and 2023 from the City of Toronto's Open Data Portal, we investigated the cause of deaths in people experiencing homelessness by age and gender. We found that drug toxicity is the leading cause of death, and among these deaths, men between the ages of 41 to 60 experienced the highest numbers in 2021. Our discovery reveals the hidden impacts of the pandemic on people experiencing homelessness who use drugs and highlights the need for improved services."
+abstract: "The number of deaths in people experiencing homelessness has been increasing since the COVID-19 pandemic. Using data obtained between 2017 and 2023 from the City of Toronto's Open Data Portal, we investigated the cause of deaths in people experiencing homelessness by age and gender. We found that drug toxicity is the leading cause of death, with the highest numbers observed among men aged 41 to 60 in 2021. Our discovery reveals the hidden impacts of the pandemic on people experiencing homelessness who use drugs and highlights the need for improved services."
 format: pdf
 bibliography: references.bib
 number-sections: true
@@ -16,6 +16,9 @@ thanks: "Code and data are available at: [https://github.com/atn-ly/toronto_home
 #| warning: false
 #| message: false
 
+#### Workspace setup ####
+
+# Load packages
 library(tidyverse)
 library(knitr)
 
@@ -27,31 +30,31 @@ cleaned_toronto_homeless <- read.csv(here::here("outputs/data/cleaned_toronto_ho
 
 # Introduction
 
-When the world was hit by the COVID-19 pandemic, everyone was told to stay at home. But where do you go if you are experiencing homelessness? In 2021, the total number of people experiencing homelessness in Toronto was 7,347 [@homelesshub]. People experiencing homelessness are often a last priority and it was no different during the pandemic. At the start of 2020, Toronto Public Health stopped tracking deaths of people experiencing homelessness and posting overnight shelter statistics due to overwhelming numbers [@rabble]. The situation was particularly devastating for people experiencing homelessness who use drugs. With pandemic restrictions, people were isolated and more likely to relapse and overdose [@camh]. 
+When the COVID-19 pandemic hit the world in 2020, people were told to stay home. But where do you go if you are experiencing homelessness? In 2021, the total number of people experiencing homelessness in Toronto was 7,347 [@homelesshub]. People experiencing homelessness are often a last priority, and it was no different during the pandemic. At the start of 2020, Toronto Public Health stopped tracking deaths of people experiencing homelessness due to overwhelming numbers [@rabble]. The situation was particularly devastating for those who also use drugs. With pandemic restrictions, many people were isolated and more likely to relapse and overdose [@camh].
 
-While the leading cause of deaths in people experiencing homelessness has been reported to be due to drug toxicity [@cp24], we still do not know which age group and gender is most impacted. In this paper, we attempt to answer this question. We use R [@citeR] to analyze a dataset from City of Toronto's Open Data Portal [@portal] on the cause of deaths in people experiencing homelessness by age and gender. We construct a table and bar chart to describe how many deaths occurred each year between 2017 and 2023 and the cause of death. After determining that drug toxicity is the leading cause of death, we construct another bar chart to describe how many deaths due to drug toxicity occurred each year between 2017 and 2023 by age and gender. We found that men between the ages of 41 to 60 experienced the highest numbers of deaths due to drug toxicity in 2021.
+While the leading cause of death in people experiencing homelessness has been reported to be due to drug toxicity [@cp24], we still do not know which age group and gender is most impacted. In this paper, we attempt to answer this question. We use R [@citeR] to analyze a dataset from the City of Toronto's Open Data Portal [@portal] on the cause of deaths in people experiencing homelessness by age and gender. We constructed a table and graph to determine the relationship between the number of deaths from 2017 to 2023 and the cause of death. After determining that drug toxicity is the leading cause of death across all years, we constructed another graph to find which age and gender accounted for the most deaths due to drug toxicity. We found that men between the ages of 41 and 60 experienced the highest number of deaths due to drug toxicity in 2021.
 
-Data on deaths of people experiencing homelessness has been historically underreported, and it is crucial to collect and analyze this data to identify the groups that need support, as they are not just numbers but actual human beings. The remainder of the paper is contained in Section 2 which includes two parts: Section 2.1 discusses the source of the data and how it was collected and Section 2.2 presents the analysis of it using tables and figures to tell the story about people experiencing homelessness in Toronto. 
+Data on deaths of people experiencing homelessness has been historically underreported. It is crucial to collect and analyze this data to identify groups that need support, as these are not just numbers but actual human beings. In this paper we will tell a story about people experiencing homelessness in Toronto. The remainder of the paper is contained in Section 2 which includes two parts: Section 2.1 discusses the source of the data and how it was collected and Section 2.2 presents the analysis of it using tables and figures. 
 
 \newpage
 
 # Data
 
 ## Data source and collection
-The dataset being used in this paper was taken from the City of Toronto’s Open Data Portal [@portal] using the package `opendatatoronto` [@opendatatoronto]. The data is measuring “people experiencing homelessness who die while living on the street, at a friend’s place, at a shelter, or at other locations in Toronto,” where homelessness is defined as, “the situation of an individual or family without stable, permanent, appropriate housing, or the immediate prospect, means and ability of acquiring it” [@tph]. The dataset is refreshed semi-annually with the last update being on September 29, 2023. Toronto Public Health (TPH) began measuring this data on January 1, 2017 from reports submitted by three primary sources: agencies that support people experiencing homelessness, the Shelter, Support, and Housing Administration (SSHA), and the Toronto Homeless Memorial [@tph]. The reports are then analyzed to rule out duplications.
+The dataset used in this paper was taken from the City of Toronto’s Open Data Portal [@portal] using the package `opendatatoronto` [@opendatatoronto]. The data is measuring “people experiencing homelessness who die while living on the street, at a friend’s place, at a shelter, or at other locations in Toronto,” where homelessness is defined as “the situation of an individual or family without stable, permanent, appropriate housing, or the immediate prospect, means and ability of acquiring it” [@tph]. The dataset is refreshed semi-annually and was last updated on September 29, 2023. Toronto Public Health (TPH) began measuring this data on January 1, 2017, from reports submitted by three primary sources: agencies that support people experiencing homelessness, the Shelter, Support, and Housing Administration (SSHA), and the Toronto Homeless Memorial [@tph]. The reports are then analyzed to rule out duplications.
 
-The average age at death for people experiencing homelessness is 38 years old, compared to the average Toronto’s citizen’s 81 years of life expectancy [@globe]. Often referred to as the “invisible population,” the deaths of people experiencing homelessness were unaccounted for until the Toronto Star published a three year investigation in 2016 [@torontostar]. Without proper reporting, this downplays the issue of homelessness and prevents the government from making informed policies and spending decisions. This data was collected as an initiative to improve the health of people experiencing homelessness. Despite all this, there are only two places in Canada collecting this type of data as of today: Toronto and Vancouver [@globe]. Nonetheless, the story is the same: Every. Person. Counts.
+The average age at death for people experiencing homelessness is 38 years old, compared to the average Toronto citizen’s 81 years of life expectancy [@globe]. Often referred to as the “invisible population,” the deaths of people experiencing homelessness were unaccounted for until the Toronto Star published a three-year investigation in 2016 [@torontostar]. Without proper reporting, this downplays the issue of homelessness and prevents the government from making informed policies and spending decisions. Even though this initiative can improve the health of people experiencing homelessness, Toronto and Vancouver are the only two places in Canada collecting this type of data today [@globe]. The story that we are trying to tell is *every* person counts.
 
 ## Data analysis
 We analyzed the data in R [@citeR] using the packages `janitor` [@janitor], `knitr` [@knitr], `opendatatoronto` [@opendatatoronto], and `Tidyverse` [@tidyverse]. There were two other datasets that were available to download from the Portal: “Homeless deaths by month” and “Homeless deaths by demographics,” but were not used because they did not include the cause of death.
 
 \newpage
 
-The variables included in our dataset were mainly categorical—*ID number*, *Year of death*, *Cause of death*, *Age group*, *Gender*— and one numerical: *Count*. The *ID number* was part of the dataset to protect the privacy of the deceased, but this was not needed in our analysis because we are not interested in keeping track of the ID of each individual. The *Year of death* variable had values ranging between 2017 and 2023. For each year, there were up to 10 different causes of death: by accident, cancer, cardiovascular disease, COVID-19, drug toxicity, homicide, other, pneumonia, suicide, and unknown/pending. Then each cause was broken down by the total number of deaths for each age group (<20, 20–39, 40–59, 60+, and unknown) and gender (male, female, and unknown). Observations with a count of zero were not recorded in the dataset. (@tbl-cleaned_toronto_homeless) shows a sample of the cleaned dataset with the variables used in the analysis along with the first 15 out of 253 observations. No other variables were constructed or combined.
+The variables included in our dataset were mainly categorical—*ID number*, *Year of death*, *Cause of death*, *Age group*, *Gender*— and one numerical: *Count*. The *ID number* was part of the dataset to protect the privacy of the deceased, but was not needed in our analysis because we are not interested in keeping track of the ID of each individual. The *Year of death* variable ranged between 2017 and 2023. For each year, there were up to 10 different causes of death: by accident, cancer, cardiovascular disease, COVID-19, drug toxicity, homicide, other, pneumonia, suicide, and unknown/pending. Then each cause was broken down by the total number of deaths for each age group (<20, 20–39, 40–59, 60+, and unknown) and gender (male, female, and unknown). Observations with a count of zero were not recorded in the dataset. @tbl-cleaned_toronto_homeless shows a sample of the cleaned dataset with the variables used in the analysis along with the first 15 out of 253 observations. No other variables were constructed or combined.
 
 ```{r}
 #| label: tbl-cleaned_toronto_homeless
-#| tbl-cap: "Sample of cleaned dataset for the number of deaths for each cause of death, age group, and gender between 2017 and 2023"
+#| tbl-cap: "Sample of the cleaned dataset for the number of deaths by cause, age group, and gender between 2017 and 2023"
 #| echo: false
 cleaned_toronto_homeless |>
   slice(1:15) |>
@@ -60,15 +63,15 @@ cleaned_toronto_homeless |>
   )
 ```
 
-Some notes on the measurements of the *Year of death*, *Gender*, and *Count* variables are required. Since the dataset was last updated on September 29, 2023, we did not include the number of deaths for the months of October, November, and December of 2023 because there was no data available. Moreover, the cause of death for other genders was not collected by TPH due to small counts, so we could not include them in our analysis. In “Counting the Countless,” this can be a result of “administrative violence” [@counting]. Lastly, due to the government shutting down the tracking of deaths of people experiencing homelessness in 2020, the count for this year may be particularly underreported. It is not known how many other deaths are missing, but we attempt to visualize the data that is available.
+Some notes on the measurements of the *Year of death*, *Gender*, and *Count* variables are required. Since the dataset was last updated on September 29, 2023, we did not include the number of deaths for the months of October, November, and December of 2023 because they were not available. Moreover, the number of deaths for other genders was not collected by TPH due to small counts, so we could not include them in our analysis. In “Counting the Countless,” this can be considered a result of what Keyes' refers to as the “administrative violence” that reinforces the gender binary [@counting]. Lastly, due to the government shutting down the tracking of deaths of people experiencing homelessness in 2020, the count for this year may be particularly underreported. It is not known how many other deaths are missing, but we attempt to visualize the data that is available.
 
 \newpage
 
-We are interested in finding the leading cause of death over the years. In (@fig-deaths-vs-years-vs-cause), a bar chart summarizes the data and shows the relationship between the number of deaths, year, and cause of death. We see that drug toxicity was the cause of most deaths for each year with a large increase starting in 2020 which coincides with the start of the COVID-19 pandemic. For people experiencing homelessness, the pandemic aggravated an already stressful situation and many people reported increased substance use and fear of relapse and overdosing [@camh]. People were also administering drugs alone due to pandemic restrictions, which means decreased access to harm reduction programs and emergency services [@camh]. In 2023, the numbers of deaths returned to pre-pandemic levels, but as noted before, the data for the months of October to December are not included here.
+We are interested in finding the leading cause of death over the years. In @fig-deaths-vs-years-vs-cause, a bar chart summarizes the data and shows the relationship between the number of deaths from 2017 to 2023 and the cause of death. We see that drug toxicity was the cause of most deaths for each year with a large increase starting in 2020, coinciding with the start of the COVID-19 pandemic. For people experiencing homelessness, the pandemic aggravated an already stressful situation, and many people reported increased substance use and fear of relapse and overdosing [@camh]. People were also administering drugs alone due to pandemic restrictions, which means decreased access to harm reduction programs and emergency services [@camh]. In 2023, the number of deaths returned to pre-pandemic levels, but as mentioned earlier, the data for the months of October to December are not included here.
 
 ```{r}
 #| label: fig-deaths-vs-years-vs-cause
-#| fig-cap: "Relationship between the number of deaths, year, and cause of death"
+#| fig-cap: "Relationship between the number of deaths from 2017 to 2023 and the cause of death"
 #| echo: false
 cleaned_toronto_homeless |> 
   ggplot(mapping = aes(x = year_of_death, y= count, fill = cause_of_death)) +
@@ -79,11 +82,11 @@ cleaned_toronto_homeless |>
 
 \newpage
 
-Now that we know the leading cause of deaths over the years is due to drug toxicity, we are interested in finding which age group and gender is most impacted. In (@fig-deaths-vs-years-vs-age-vs-gender), another bar chart shows the relationship between the number of deaths due to drug toxicity, year, age group, and gender. This was done by filtering for only the rows containing the number of deaths due to drug toxicity. We see a similar pattern as in (@fig-deaths-vs-years-vs-cause), and we also see that in 2021, males aged 40–59 had the highest number of deaths, followed closely by males aged 20–39. Females across all age groups experienced dramatically less number of deaths in comparison. The question that remains is why far more males experiencing homelessness die due to drug toxicity and how can we tailor our services to support them better.
+Now that we know the leading cause of death over the years is due to drug toxicity, we are interested in finding which age group and gender is most impacted. In @fig-deaths-vs-years-vs-age-vs-gender, another bar chart shows the relationship between the number of deaths due to drug toxicity from 2017 to 2023 and age and gender. We see a similar pattern as @fig-deaths-vs-years-vs-cause, where there was a large increase in deaths during the 2020 to 2022 pandemic years. We also see that in 2021, males aged 40–59 had the highest number of deaths, followed closely by males aged 20–39. Females across all age groups experienced dramatically fewer deaths in comparison. The question that remains to be answered is why far more males experiencing homelessness die due to drug toxicity so that we can tailor our services to support them better.
 
 ```{r}
 #| label: fig-deaths-vs-years-vs-age-vs-gender
-#| fig-cap: "Relationship between the number of deaths due to drug toxicity for each age group and gender from 2017 to 2023"
+#| fig-cap: "Relationship between the number of deaths due to drug toxicity from 2017 to 2023 and age and gender"
 #| echo: false
 cleaned_toronto_homeless |> 
   filter(cause_of_death == "Drug Toxicity") |> 
