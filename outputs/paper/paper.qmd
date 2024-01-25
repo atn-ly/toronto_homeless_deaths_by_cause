@@ -71,7 +71,7 @@ We are interested in finding the leading cause of death over the years. In @fig-
 
 ```{r}
 #| label: fig-deaths-vs-years-vs-cause
-#| fig-cap: "Relationship between the number of deaths from 2017 to 2023 and the cause of death"
+#| fig-cap: "Relationship between the number of deaths from 2017 to 2023 and the cause of death: Drug toxicity was the cause of most deaths for each year with a large increase starting in 2020"
 #| echo: false
 cleaned_toronto_homeless |> 
   ggplot(mapping = aes(x = year_of_death, y= count, fill = cause_of_death)) +
@@ -86,7 +86,7 @@ Now that we know the leading cause of death over the years is due to drug toxici
 
 ```{r}
 #| label: fig-deaths-vs-years-vs-age-vs-gender
-#| fig-cap: "Relationship between the number of deaths due to drug toxicity from 2017 to 2023 and age and gender"
+#| fig-cap: "Relationship between the number of deaths due to drug toxicity from 2017 to 2023 and age and gender: Males aged 40–59 had the highest number of deaths in 2021"
 #| echo: false
 cleaned_toronto_homeless |> 
   filter(cause_of_death == "Drug Toxicity") |> 
